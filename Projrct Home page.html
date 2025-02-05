@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Interactive Learning Platform</title>
+    <link rel="stylesheet" href="Home.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=36&h=36&fit=crop&crop=faces" alt="QuizMaster Logo" class="nav-logo">
+            QuizMaster
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#dashboard">Dashboard</a>
+            <button id="loginBtn" class="auth-btn">Login</button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transform Learning Through Interactive Quizzes</h1>
+                    <p>Create, share, and track progress with our advanced quiz platform designed for both teachers and students.</p>
+                    <div class="cta-buttons">
+                        <button onclick="location.href='teacherstudent.html'"class="primary-btn">Get Started</button>
+                        <button class="secondary-btn">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <h3>1,000+</h3> 
+                        <p>Active Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>500+</h3>
+                        <p>Quizzes Created</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>95%</h3>
+                        <p>Satisfaction Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon teacher"></div>
+                        <h3>For Teachers</h3>
+                        <ul>
+                            <li>Create custom quizzes</li>
+                            <li>Real-time performance tracking</li>
+                            <li>Detailed analytics</li>
+                            <li>Question bank management</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon student"></div>
+                        <h3>For Students</h3>
+                        <ul>
+                            <li>Interactive quiz taking</li>
+                            <li>Progress tracking</li>
+                            <li>Performance analytics</li>
+                            <li>Practice mode</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="dashboard-preview">
+            <div class="container">
+                <h2>Performance Analytics</h2>
+                <div class="dashboard-grid">
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                    <div class="leaderboard-container">
+                        <h3>Top Performers</h3>
+                        <div class="leaderboard">
+                            <div class="leaderboard-header">
+                                <span>Rank</span>
+                                <span>Student</span>
+                                <span>Score</span>
+                            </div>
+                            <div class="leaderboard-items">
+                                <!-- Leaderboard items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+            <div id="loginForm" class="auth-form active">
+                <h2>Welcome Back</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Login</button>
+                </form>
+            </div>
+            <div id="registerForm" class="auth-form">
+                <h2>Create Account</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="regRole">Role</label>
+                        <select id="regRole" required>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // DOM Elements
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeBtn = document.querySelector('.close');
+const tabBtns = document.querySelectorAll('.tab-btn');
+const authForms = document.querySelectorAll('.auth-form');
+
+// Chart.js Configuration
+const ctx = document.getElementById('performanceChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+            label: 'Average Score',
+            data: [75, 82, 88, 95],
+            borderColor: '#4f46e5',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Student Performance Trend'
+            }
+        }
+    }
+});
+
+// Modal Functionality
+loginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+    }
+});
+
+// Tab Switching
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons and forms
+        tabBtns.forEach(b => b.classList.remove('active'));
+        authForms.forEach(f => f.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding form
+        btn.classList.add('active');
+        document.getElementById(`${btn.dataset.tab}Form`).classList.add('active');
+    });
+});
+
+// Sample Leaderboard Data
+const leaderboardData = [
+    { rank: 1, name: 'Alice Johnson', score: 98 },
+    { rank: 2, name: 'Bob Smith', score: 95 },
+    { rank: 3, name: 'Charlie Brown', score: 92 },
+    { rank: 4, name: 'Diana Prince', score: 90 },
+    { rank: 5, name: 'Edward Blake', score: 88 }
+];
+
+// Populate Leaderboard
+const leaderboardItems = document.querySelector('.leaderboard-items');
+leaderboardData.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.className = 'leaderboard-item';
+    itemElement.innerHTML = `
+        <span class="rank">${item.rank}</span>
+        <span class="name">${item.name}</span>
+        <span class="score">${item.score}</span>
+    `;
+    leaderboardItems.appendChild(itemElement);
+});
+
+// Form Submissions
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add login logic here
+    console.log('Login submitted');
+});
+
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add registration logic here
+    console.log('Registration submitted');
+});
+    </script>
+</body>
+</html>
