@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More - QuizMaster</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+<style>
+    /* Color Variables */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --highlight-color: #facc15;
+    --background-color: #f0f2f5;
+    --dark-text: #1a1a1a;
+    --light-text: #ffffff;
+    --border-radius: 8px;
+    --transition: all 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Apply animations */
+.animate-fade { animation: fadeIn 1s ease-in-out; }
+.animate-slide { animation: slideIn 1s ease-in-out; }
+.animate-scale { animation: scaleUp 0.8s ease-in-out; }
+.animate-bounce { animation: bounce 1.5s infinite; }
+
+/* Sections */
+.hero-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    text-align: center;
+    color: var(--light-text);
+}
+
+.info-section, .how-it-works, .why-choose, .cta-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.highlight {
+    color: var(--highlight-color);
+}
+
+/* Features & Steps Grid */
+.features-grid, .steps-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature-card, .step {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover, .step:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Call to Action */
+.cta-section {
+    background: var(--primary-color);
+    color: var(--light-text);
+}
+
+.cta-section button {
+    margin-top: 1.5rem;
+    background: var(--highlight-color);
+    color: black;
+}
+
+.cta-section button:hover {
+    background: #eab308;
+}
+
+</style>  <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=36&h=36&fit=crop&crop=faces" alt="QuizMaster Logo" class="nav-logo">
+            QuizMaster
+        </div>
+        <div class="nav-links">
+            <a href="Projrct Home page.html">Home</a>
+            <a href="learnmore.html" class="active">Learn More</a>
+            <a href="teacherstudent.html">Get Started</a>
+            <button id="loginBtn" class="auth-btn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="animate-slide">Discover <span class="highlight">QuizMaster</span></h1>
+            <p class="animate-fade">The ultimate interactive quiz platform for teachers and students.</p>
+        </div>
+    </header>
+
+    <!-- What is QuizMaster? -->
+    <section class="info-section animate-fade">
+        <div class="container">
+            <h2>📌 What is <span class="highlight">QuizMaster</span>?</h2>
+            <p>QuizMaster is a **powerful quiz platform** designed to make learning engaging and effective. Teachers can create quizzes, track student performance, and analyze results, while students can take quizzes, view scores, and improve their skills.</p>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="features-section animate-slide">
+        <div class="container">
+            <h2>✨ Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-scale">
+                    <h3>👨‍🏫 For Teachers</h3>
+                    <p>Create and manage quizzes, track student progress, and analyze performance in real-time.</p>
+                </div>
+                <div class="feature-card animate-scale">
+                    <h3>👨‍🎓 For Students</h3>
+                    <p>Join quizzes easily, track your performance, and receive AI-powered feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works animate-fade">
+        <div class="container">
+            <h2>🛠️ How It Works</h2>
+            <div class="steps-grid">
+                <div class="step animate-scale">
+                    <h3>📌 Teachers</h3>
+                    <ul>
+                        <li>Sign up & create quizzes</li>
+                        <li>Share quiz codes with students</li>
+                        <li>Track performance with analytics</li>
+                    </ul>
+                </div>
+                <div class="step animate-scale">
+                    <h3>📌 Students</h3>
+                    <ul>
+                        <li>Join quizzes with a code</li>
+                        <li>Complete quizzes before time runs out</li>
+                        <li>Get scores & leaderboard rankings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose QuizMaster? -->
+    <section class="why-choose animate-slide">
+        <div class="container">
+            <h2>🎯 Why Choose <span class="highlight">QuizMaster</span>?</h2>
+            <p>🚀 Fast, simple, and powerful! Enjoy interactive quizzes with real-time analytics and leaderboard rankings.</p>
+            <ul>
+                <li>📊 AI-based performance tracking</li>
+                <li>💻 Works on all devices</li>
+                <li>🔒 Secure & private</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="animate-slide">🎉 Ready to Get Started?</h2>
+            <button class="primary-btn animate-bounce" onclick="location.href='teacherstudent.html'">Start Now</button>
+        </div>
+    </section>
+
+</body>
+</html>
