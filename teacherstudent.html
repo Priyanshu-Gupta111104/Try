@@ -8,13 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="navbar-container"></div>
+
     <div class="container">
         <div id="welcome-screen" class="screen">
             <h1>Quiz Platform</h1>
-            <div class="button-group">
-                <button onclick="showTeacherPanel()">Teacher</button>
-                <button onclick="showStudentPanel()">Student</button>
-            </div>
+            <div class="roles">
+                <div class="role" onclick="showTeacherPanel()">
+                    <img src="image.png" alt="Teacher">
+                    <div class="role-title">I'm a Teacher</div>
+                    <div class="role-description">Create quizzes and monitor student progress</div>
+                </div>
+            
+                <div class="role" onclick="showStudentPanel()">
+                    <img src="image2.png" alt="Student">
+                    <div class="role-title">I'm a Student</div>
+                    <div class="role-description">Join a quiz and test your knowledge</div>
+                </div>
+            </div>         
         </div>
 
         <div id="teacher-panel" class="screen hidden">             
@@ -47,6 +58,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <button onclick="showWelcomeScreen()">Back</button>
         </div>
 
@@ -70,6 +82,7 @@
                     <button onclick="submitQuiz()" id="submit-button" class="hidden">Submit Quiz</button>
                 </div>
             </div>
+            <br>
             <button onclick="showWelcomeScreen()">Back</button>
         </div>
 
@@ -92,4 +105,5 @@
     </div>
 </body>
 <script src="teacherstudent.js"></script>
+<script src="navbar.js"></script>
 </html>
