@@ -306,4 +306,3 @@ function selectOption(questionIndex, optionIndex) {
     const socket = io("http://localhost:5000"); // Adjust for production
 
 
-
