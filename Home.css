@@ -71,6 +71,11 @@ transition: var(--transition);
 background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+
+
+
+
 .auth-btn {
 background: var(--secondary-color);
 color: white;
@@ -381,6 +386,7 @@ padding: 6rem 1rem 2rem;
 font-size: 1.5rem;
 }
 }
+
 @keyframes fadeSlideUp {
     0% {
         opacity: 0;
@@ -402,5 +408,5 @@ font-size: 1.5rem;
 }
 
 .stat-card, .feature-card {
-    animation: fadeIn 0.8s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
