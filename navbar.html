@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Home.css">
+        
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=36&h=36&fit=crop&crop=faces" alt="QuizMaster Logo" class="nav-logo">
+            <span>Quizpi</span>
+        </div>
+        <div class="nav-links">
+            <a href="Projrct Home page.html" class="nav-item">Home</a>
+        </div>
+    </nav>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("navbar-container").innerHTML = html;
+                setupNavbar(); // Ensure login button works
+            })
+            .catch(error => console.error("Error loading navbar:", error));
+    });
+    
+    function setupNavbar() {
+        const loginBtn = document.getElementById("authBtn");
+        if (loginBtn) {
+            loginBtn.addEventListener("click", () => {
+                const loginModal = document.getElementById("loginModal");
+                if (loginModal) {
+                    loginModal.style.display = "block";
+                } else {
+                    console.error("Login modal not found!");
+                }
+            });
+        }
+    }
+    </script> 
+</body>
+</html>
