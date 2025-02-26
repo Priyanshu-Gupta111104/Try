@@ -97,7 +97,7 @@
             results: []
         };
         
-        const quizLink = `${window.location.origin}/quiz.html?quiz=${quizId}`;
+        const quizLink = `${window.location.href}?quiz=${quizId}`;
         document.getElementById('quiz-link').textContent = quizLink;
         document.getElementById('quiz-code-display').textContent = quizId;
         document.getElementById('share-link').classList.remove('hidden');
