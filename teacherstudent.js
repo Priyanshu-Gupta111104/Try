@@ -286,14 +286,16 @@ function selectOption(questionIndex, optionIndex) {
         });
     }
 
-    // Check for quiz parameter in URL
-    function onloadfunction() {
+   // Check for quiz parameter in URL
+    window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const quizId = urlParams.get('quiz');
-        
+    
         if (quizId) {
-            showStudentPanel();
-            document.getElementById('quiz-code').value = quizId;
+            showStudentPanel();  // Automatically open Student Panel
+            document.getElementById('quiz-code').value = quizId; // Auto-fill quiz code
+        } else {
+            showWelcomeScreen(); // Show Welcome Screen if no quiz ID
         }
     };
 
